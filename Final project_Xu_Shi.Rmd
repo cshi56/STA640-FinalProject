@@ -350,6 +350,7 @@ $$
 \end{aligned}
 $$
 
+
 ```{r,echo=FALSE, message=FALSE, warning=FALSE}
 
 # Set seed for reproducibility
@@ -694,6 +695,7 @@ fig7 <- ggplot(plot_data, aes(x = Model, y = Estimate, label=round(Estimate, 5))
 #cat("Random effects treatment effect estimate:", coef(random_effects)["treatment"], "\n")
 ```
 
+\hspace{3cm}
 
 ```{r}
 (fig4 + fig5)/(fig6 + fig7)
