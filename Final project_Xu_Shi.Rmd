@@ -1,12 +1,11 @@
 ---
 title:  "Fixed/Random Effects Analysis of Repeated Measures Data "
-author: "Flora Shi, Lindsay Xu"
+author: "Flora Shi and Lindsay Xu"
 output: pdf_document
 fontsize: 11pt
 geometry: left=0.8in, right=0.8in, top=0.6in, bottom=0.8in
 ---
 
-\vspace{-1.5 cm}
 
 ```{r setup, include=FALSE, results='hide', message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
@@ -24,11 +23,17 @@ library("patchwork")
 library("kableExtra")
 ```
 
+
+Github: https://github.com/cshi56/STA640-FinalProject
+
+Video: https://github.com/cshi56/STA640-FinalProject
+
 # Abstract
 
 Employing fixed or random effects models in longitudinal or panel data analysis is commonly considered to mitigate the impact of bias, particularly unmeasured confounding, under suitable conditions. Nevertheless, the underlying mechanisms through which fixed or random effects models address unmeasured confounders remain unclear. In this study, we use a data simulation design to elucidate how, under specific circumstances, fixed and random effects models can limit the influence of unmeasured confounders and improve causal estimation. Our findings suggest that the fixed effect model reduces the impact of unmeasured time-invariant confounders because the fixed effect model estimators rely on the variation within individuals. Therefore, the effects of unmeasured time-invariant confounders are controlled by the fixed effect model. In contrast, the random-effect model estimator uses variations from both within and between individuals. Meanwhile, in most cases, between-individual differences will introduce observed and unobserved confounders that the random-effect model cannot remove, causing bias. However, when the data collection points (T) and number of individuals (N) are large, the random model estimate will be largely determined by within-individual variation. Under this scenario, the difference between estimates from fixed effects and random-effects models is marginal. In addition, time-varying unmeasured confounders can hardly be controlled by simple fixed effects and random-effects models.
 
-# 1. The Challange with Panel Data
+# 1. The Challenge with Panel Data
+
 The main challenge of causal inference using panel data lies in the potential presence of unmeasured confounders that can affect the participants' exposure. In observational studies, participants are not randomly assigned to control and treatment groups. Rather, exposed and unexposed participants can differ significantly due to personal features or various social processes. In the real world, scientists try to include all important observed confounders (such as gender, race, education, etc.) in the model. However, there can always be unmeasured confounders (such as genetics, personalities, emotions, etc.) that affect the participants' exposure. Panel survey data (which involves repeated measures of the same individual/unit over time) give us a chance to limit the effects of unmeasured confounders in the model, while the estimation remains representative of the whole population (Gunasekara et la., 2014). Econometrics introduced the fixed effect model to estimate based on the change within the individual over time. The following discussions focus on how fixed effects and random effects models can control for unmeasured confounders under different assumptions.
 
 # 2. Simulation Design
@@ -42,10 +47,11 @@ Borrowing the idea from Angrist and Pischke (chapter 5, 2009), we are interested
 3. Time-varying confounding with a correlation between the confounder and treatment variable.  
 
 Most importantly, we vary the number of individuals (N) and the number of time points (T). We have tried four scenarios:
-(1) small N and small T;   
-(2) small N and large T;   
-(3) large N and small T;   
-(4) large N and large T.
+
+1.  small N and small T;   
+2.  small N and large T;   
+3.  large N and small T;   
+4.  large N and large T.
 
 
 # 3. Main Findings
@@ -697,7 +703,8 @@ fig7 <- ggplot(plot_data, aes(x = Model, y = Estimate, label=round(Estimate, 5))
 
 Overall, when analyzing panel data, fixed effects models are effective in assessing the relationship between the treatment variable and the outcome because they control for time-invariant unmeasured confounders and adjust for measured time-varying confounders (key covariates of interest). Moreover, we found that fixed effects models work best with large sample sizes (N) and low dropout rates over time. In contrast, for analyses involving individuals at different time points, where there may be a small number of individuals but a large number of time points, random effects models are often preferred to fixed effects models, as they can be more efficient and flexible in dealing with individual observations at multiple points. In summary, fixed effects models are useful tools to control for time-invariant confounding, which can bias causal estimates. However, to address unmeasured time-varying confounding, more complex models such as instrumental variables or controlling for lagged dependent variables may be necessary (Angrist and Pischke, 2009).Ultimately, the model selection will depend on the research question, the available data, and the assumptions made about the underlying data-generating process.
 
-# Reference
-1. Angrist, Joshua D., and Jörn-Steffen Pischke. Mostly harmless econometrics: An empiricist's companion. Princeton university press, 2009.
+# 5. References
+
+1. Angrist, Joshua D., and J?rn-Steffen Pischke. Mostly harmless econometrics: An empiricist's companion. Princeton university press, 2009.
 2. Gelman, Andrew, and Jennifer Hill. Data analysis using regression and multilevel/hierarchical models. Cambridge university press, 2006.
 3. Gunasekara, Fiona Imlach, et al. "Fixed effects analysis of repeated measures data." International journal of epidemiology 43.1 (2014): 264-269.
