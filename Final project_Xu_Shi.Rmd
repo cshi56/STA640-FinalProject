@@ -710,3 +710,8 @@ Overall, when analyzing panel data, fixed effects models are effective in assess
 1. Angrist, Joshua D., and J?rn-Steffen Pischke. Mostly harmless econometrics: An empiricist's companion. Princeton university press, 2009.
 2. Gelman, Andrew, and Jennifer Hill. Data analysis using regression and multilevel/hierarchical models. Cambridge university press, 2006.
 3. Gunasekara, Fiona Imlach, et al. "Fixed effects analysis of repeated measures data." International journal of epidemiology 43.1 (2014): 264-269.
+
+
+# 6. Work Distribution
+
+Lindsay did the simulation and Flora did the writing. Each member shared the work equally.
